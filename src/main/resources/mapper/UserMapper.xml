@@ -1,0 +1,34 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.spring.myBatis.mappers.UserMapper">
+
+    <!-- Select a user by ID -->
+    <select id="getUserById" resultType="com.spring.myBatis.entity.User" parameterType="int">
+        SELECT * FROM users WHERE id = #{id}
+    </select>
+
+    <!--Get all users-->
+    <select id="getAllUsers" resultType="com.spring.myBatis.entity.User">
+        SELECT * FROM users
+    </select>
+
+    <!--Creating new user-->
+    <insert id="createUser" parameterType="com.spring.myBatis.entity.User">
+        INSERT INTO users (name, email, dob)
+        VALUES
+        (#{name}, #{email}, #{dob})
+    </insert>
+
+    <!--Update user-->
+    <update id="updateUser" parameterType="com.spring.myBatis.entity.User">
+        UPDATE users
+        SET name=#{name}, email=#{email}
+        WHERE id=#{id}
+    </update>
+
+    <select id="getUsersBwYearRange" parameterType="java.util.Map" resultType="com.spring.myBatis.entity.User">
+        SELECT * FROM users WHERE YEAR(dob) BETWEEN #{startYear} AND #{endYear}
+    </select>
+
+</mapper>
