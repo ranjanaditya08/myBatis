@@ -27,8 +27,11 @@
         WHERE id=#{id}
     </update>
 
+    <!--Get User b/w Year Range-->
     <select id="getUsersBwYearRange" parameterType="java.util.Map" resultType="com.spring.myBatis.entity.User">
         SELECT * FROM users WHERE YEAR(dob) BETWEEN #{startYear} AND #{endYear}
     </select>
+
+
 
 </mapper>

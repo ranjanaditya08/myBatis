@@ -1,0 +1,20 @@
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.spring.myBatis.mappers.ProductMapper">
+
+    <insert id="addProduct" parameterType="com.spring.myBatis.entity.Product">
+        INSERT INTO product(product_id,product_name)
+        VALUE (#{product_id}, #{product_name})
+    </insert>
+
+    <select id="getAllProduct" resultType="com.spring.myBatis.entity.Product">
+        SELECT * FROM product
+    </select>
+
+    <select id="getProductById" parameterType="int" resultType="com.spring.myBatis.entity.Product">
+        SELECT * FROM product WHERE product_id=#{product_id}
+    </select>
+
+
+
+</mapper>
